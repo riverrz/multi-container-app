@@ -3,11 +3,6 @@ version: "3"
 services:
   postgres:
     image: "postgres:latest"
-    healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
   redis:
     image: "redis:latest"
   api:
@@ -56,4 +51,3 @@ services:
     # waits for api to start first
     depends_on:
       - api
-
