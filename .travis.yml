@@ -23,3 +23,16 @@ after_success:
   - docker push shivam123425/multi-client
   - docker push shivam123425/multi-nginx
   - docker push shivam123425/multi-server
+
+deploy:
+  provider: elasticbeanstalk
+  region: "us-east-1"
+  app: multi-container-app
+  env: MultiContainerApp-env
+  bucket_name: elasticbeanstalk-us-east-1-054252703049
+  bucket_path: docker-multi-container
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key:
+    secure: $AWS_SECRET_KEY
